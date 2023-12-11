@@ -17,8 +17,6 @@ RUN yarn build
 
 EXPOSE 8099
 
-WORKDIR /app
-
 CMD ["npm", "run", "serve"]
 
 
