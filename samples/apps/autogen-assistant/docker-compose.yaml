@@ -5,9 +5,6 @@ services:
       context: .
     restart: always
     container_name: autogen_assistant_ui
-    volumes:
-      - .:/app
-      - ./output:/app/public
     networks:
       - "proxy"
     labels:
@@ -15,6 +12,7 @@ services:
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.autogen_assistant_ui.entrypoints=websecure"
       - "traefik.http.routers.autogen_assistant_ui.rule=Host(`assistant.oneworx.de`)"
+      - "traefik.http.services.autogen_assistant_ui.loadbalancer.server.port=8081"
 
 networks:
   proxy:
