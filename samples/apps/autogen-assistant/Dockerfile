@@ -3,7 +3,7 @@ RUN apt-get update && apt-get -y update
 RUN apt-get install -y sudo git npm
 
 COPY . /app
-WORKDIR /app/autogen-assistant
+WORKDIR /app
 
 RUN pip install -e .
 
