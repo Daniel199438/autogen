@@ -7,7 +7,9 @@ services:
     container_name: autogen_assistant_ui
     volumes:
       - .:/app
-      - ./output:/app/output
+      - ./output:/app/public
+    ports:
+      - "8099:80"
     networks:
       - "proxy"
     labels:

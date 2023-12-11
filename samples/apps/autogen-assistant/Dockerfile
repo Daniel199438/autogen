@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.11 AS builder
 RUN apt-get update && apt-get -y update
 RUN apt-get install -y sudo git npm
 
@@ -15,8 +15,15 @@ WORKDIR /app/frontend
 RUN yarn install
 RUN yarn build
 
-EXPOSE 8099
-
-CMD ["npm", "run", "serve"]
+# nginx state for serving content
+FROM nginx:alpine
+# Set working directory to nginx asset directory
+WORKDIR /usr/share/nginx/html
+# Remove default nginx static assets
+RUN rm -rf ./*
+# Copy static assets from builder stage
+COPY --from=builder /app/public .
+# Containers run nginx with global directives and daemon off
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
 
