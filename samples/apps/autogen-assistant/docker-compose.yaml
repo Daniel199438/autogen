@@ -8,6 +8,8 @@ services:
     volumes:
       - .:/app
       - ./output:/app/public
+    ports:
+      - "8081:8081"
     networks:
       - "proxy"
     labels:
