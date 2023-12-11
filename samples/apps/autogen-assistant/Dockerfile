@@ -7,8 +7,6 @@ WORKDIR /app
 
 RUN pip install -e .
 
-RUN cd frontend
-
 RUN npm install -g gatsby-cli
 RUN npm install --global yarn
 RUN cd frontend
