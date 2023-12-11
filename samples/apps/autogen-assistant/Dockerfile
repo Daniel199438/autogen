@@ -9,7 +9,9 @@ RUN pip install -e .
 
 RUN npm install -g gatsby-cli
 RUN npm install --global yarn
-RUN cd frontend
+
+WORKDIR /app/frontend
+
 RUN yarn install
 RUN yarn build
 
