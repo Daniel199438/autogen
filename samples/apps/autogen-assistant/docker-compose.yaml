@@ -8,8 +8,6 @@ services:
     volumes:
       - .:/app
       - ./output:/app/public
-    ports:
-      - "8099:80"
     networks:
       - "proxy"
     labels:
@@ -17,7 +15,7 @@ services:
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.autogen_assistant_ui.entrypoints=websecure"
       - "traefik.http.routers.autogen_assistant_ui.rule=Host(`assistant.oneworx.de`)"
-      - "traefik.http.services.autogen_assistant_ui.loadbalancer.server.port=8099"
+      - "traefik.http.services.autogen_assistant_ui.loadbalancer.server.port=8081"
 
 networks:
   proxy:
