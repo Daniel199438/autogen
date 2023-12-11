@@ -15,7 +15,6 @@ services:
       - "traefik.docker.network=proxy"
       - "traefik.http.routers.autogen_assistant_ui.entrypoints=websecure"
       - "traefik.http.routers.autogen_assistant_ui.rule=Host(`assistant.oneworx.de`)"
-      - "traefik.http.services.autogen_assistant_ui.loadbalancer.server.port=8081"
 
 networks:
   proxy:
