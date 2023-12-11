@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  autogen_assistant_ui:
+    build:
+      context: .
+    restart: always
+    container_name: autogen_assistant_ui
+    volumes:
+      - .:/app
+      - ./output:/app/output
+    networks:
+      - "proxy"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.autogen_assistant_ui.entrypoints=websecure"
+      - "traefik.http.routers.autogen_assistant_ui.rule=Host(`assistant.oneworx.de`)"
+      - "traefik.http.services.autogen_assistant_ui.loadbalancer.server.port=8099"
+
+networks:
+  proxy:
+    external: true

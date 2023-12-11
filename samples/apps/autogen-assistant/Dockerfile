@@ -1,0 +1,22 @@
+FROM python:3.11
+RUN apt-get update && apt-get -y update
+RUN apt-get install -y sudo git npm
+
+COPY . /app
+WORKDIR /app/autogen/samples/apps/autogen-assistant
+
+pip install -e .
+
+RUN cd frontend
+
+RUN npm install -g gatsby-cli
+RUN npm install --global yarn
+RUN cd frontend
+RUN yarn install
+RUN yarn build
+
+EXPOSE 8099
+
+ENTRYPOINT ["python"]
+CMD ["autogenra ui --port 8099"]
+
