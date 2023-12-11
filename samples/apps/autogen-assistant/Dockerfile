@@ -5,7 +5,7 @@ RUN apt-get install -y sudo git npm
 COPY . /app
 WORKDIR /app/autogen/samples/apps/autogen-assistant
 
-pip install -e .
+RUN pip install -e .
 
 RUN cd frontend
 
