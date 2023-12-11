@@ -19,5 +19,6 @@ EXPOSE 8099
 
 WORKDIR /app
 
-CMD ["autogenra ui --port 8099"]
+CMD ["npm", "run", "serve"]
+
 
