@@ -17,6 +17,5 @@ RUN yarn build
 
 EXPOSE 8099
 
-ENTRYPOINT ["python"]
 CMD ["autogenra ui --port 8099"]
 
