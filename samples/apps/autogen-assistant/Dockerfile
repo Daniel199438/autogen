@@ -17,5 +17,7 @@ RUN yarn build
 
 EXPOSE 8099
 
+WORKDIR /app
+
 CMD ["autogenra ui --port 8099"]
 
